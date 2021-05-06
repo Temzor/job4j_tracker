@@ -9,7 +9,7 @@ public class AddElement {
         List<String> check = new ArrayList<>(list);
         check.add(str);
         if (list.size() != check.size()) {
-            result =true;
+            result = true;
         }
         return result;
     }

@@ -60,7 +60,8 @@ public class JobTest {
 
     @Test
     public void whenComparatorByDescNameAndDescPriority() {
-        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
+        Comparator<Job> cmpNamePriority = new JobDescByName()
+                .thenComparing(new JobDescByPriority());
         int rsl = cmpNamePriority.compare(
                 new Job("Dmitrii", 0),
                 new Job("Dmitrii", 1)

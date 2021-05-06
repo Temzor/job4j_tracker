@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class PhoneDictionary {
     private ArrayList<Person> personArrayList = new ArrayList<>();
 
-    public void add (Person person) {
+    public void add(Person person) {
         this.personArrayList.add(person);
     }
 
