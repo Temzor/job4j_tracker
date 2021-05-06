@@ -13,8 +13,7 @@ public class JobSorter {
                 new Job("Fix bug", 2),
                 new Job("X task", 0)
         );
-        Comparator<Job> comb = new JobDescByNameLn()
-                .thenComparing(new JobDescByName())
+        Comparator<Job> comb = new JobDescByName()
                 .thenComparing(new JobDescByPriority());
         Collections.sort(jobs, comb);
         System.out.println(jobs);
