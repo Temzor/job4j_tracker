@@ -1,4 +1,9 @@
 package ru.job4j.oop;
+/**
+ * Класс описывает принципы ООП
+ * @author Dnitrii Kapustin
+ * @version 1.0
+ */
 
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;

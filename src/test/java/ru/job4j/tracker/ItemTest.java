@@ -1,5 +1,9 @@
-
 package ru.job4j.tracker;
+/**
+ * Класс описывает принципы ООП
+ * @author Dnitrii Kapustin
+ * @version 1.0
+ */
 
 import org.junit.Test;
 
