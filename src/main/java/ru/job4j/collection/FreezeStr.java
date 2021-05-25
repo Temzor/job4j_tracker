@@ -1,8 +1,6 @@
 package ru.job4j.collection;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FreezeStr {
     public static boolean eq(String left, String right) {
@@ -13,18 +11,22 @@ public class FreezeStr {
         char[] charLeft = left.toCharArray();
         char[] charRight = right.toCharArray();
 
-        Arrays.sort(charLeft);
-        Arrays.sort(charRight);
+        Map<Character, Integer> leftMap = new HashMap<>();
+        for (Character character : charLeft) {
+            Integer value = leftMap.get(character);
+            leftMap.put(character, value == null ? 1 : ++value);
+        }
 
-        Map<Character, Integer> map1 = new HashMap<>();
-        Map<Character, Integer> map2 = new HashMap<>();
-
-        for (int i = 0; i < charLeft.length; i++) {
-            map1.put(charLeft[i], i);
-            map2.put(charRight[i], i);
+        for (char c : charRight) {
+            if (!leftMap.containsKey(c)) {
+                return false;
+            } else if (leftMap.containsKey(c) && leftMap.get(c) == 1) {
+                leftMap.remove(c);
+            } else if (leftMap.containsKey(c) && leftMap.get(c) > 1) {
+                leftMap.put(c, leftMap.get(c) - 1);
+            }
 
         }
-        return map1.equals(map2);
-
+        return true;
     }
 }
