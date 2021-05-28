@@ -7,6 +7,10 @@ public class Item {
     public Item(String s) {
     }
 
+    public Item() {
+
+    }
+
     public int getId() {
         return id;
     }
