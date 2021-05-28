@@ -21,7 +21,7 @@ public class Tracker {
 
     public List<Item> findAll() {
         return items;
-        }
+    }
 
     public List<Item> findByName(String key) {
         List<Item> needName = new ArrayList<>();
