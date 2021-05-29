@@ -2,6 +2,8 @@ package ru.black.lambda;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StudentInfo {
     void testStudents(ArrayList<Student> a1, StudentsChecks sc) {
@@ -27,17 +29,17 @@ public class StudentInfo {
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
-        info.testStudents(students, (Student s) -> {
-            return s.getAvgGrade() > 8;
-        });
+
+        Collections.sort(students, ((o1, o2) -> o1.getCourse() - o2.getCourse()));
+        System.out.println(students);
+
         System.out.println("-----------------------------------");
-        info.testStudents(students, (Student s) -> {
-            return s.getAge() < 30;
-        });
+        info.testStudents(students, s -> s.getAvgGrade() > 8);
         System.out.println("-----------------------------------");
-        info.testStudents(students, (Student s) -> {
-            return s.getAge() > 20 && s.getAvgGrade() < 9.3 && s.getSex() == 'f';
-        });
+        info.testStudents(students, s -> s.getAge() < 30);
+        System.out.println("-----------------------------------");
+        info.testStudents(students, s
+                -> s.getAge() > 20 && s.getAvgGrade() < 9.3 && s.getSex() == 'f');
     }
 
     interface StudentsChecks {
