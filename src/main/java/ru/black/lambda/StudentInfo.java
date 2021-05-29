@@ -33,14 +33,6 @@ public class StudentInfo {
         Predicate<Student> studentPredicate2 = student -> student.getSex() == 'm';
 
         info.testStudents(students, studentPredicate1.negate());
-
-//        System.out.println("-----------------------------------");
-//        info.testStudents(students, s -> s.getAvgGrade() > 8);
-//        System.out.println("-----------------------------------");
-//        info.testStudents(students, s -> s.getAge() < 30);
-//        System.out.println("-----------------------------------");
-//        info.testStudents(students, s
-//                -> s.getAge() > 20 && s.getAvgGrade() < 9.3 && s.getSex() == 'f');
     }
 }
 
