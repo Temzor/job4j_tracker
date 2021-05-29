@@ -3,12 +3,12 @@ package ru.black.lambda;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class StudentInfo {
-    void testStudents(ArrayList<Student> a1, StudentsChecks sc) {
+    void testStudents(ArrayList<Student> a1, Predicate<Student> studentPredicate) {
         for (Student s : a1) {
-            if (sc.check(s)) {
+            if (studentPredicate.test(s)) {
                 System.out.println(s);
             }
         }
@@ -29,21 +29,18 @@ public class StudentInfo {
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
+        Predicate<Student> studentPredicate1 = student -> student.getAvgGrade() > 7.5;
+        Predicate<Student> studentPredicate2 = student -> student.getSex() == 'm';
 
-        Collections.sort(students, ((o1, o2) -> o1.getCourse() - o2.getCourse()));
-        System.out.println(students);
+        info.testStudents(students, studentPredicate1.negate());
 
-        System.out.println("-----------------------------------");
-        info.testStudents(students, s -> s.getAvgGrade() > 8);
-        System.out.println("-----------------------------------");
-        info.testStudents(students, s -> s.getAge() < 30);
-        System.out.println("-----------------------------------");
-        info.testStudents(students, s
-                -> s.getAge() > 20 && s.getAvgGrade() < 9.3 && s.getSex() == 'f');
-    }
-
-    interface StudentsChecks {
-        boolean check(Student s);
+//        System.out.println("-----------------------------------");
+//        info.testStudents(students, s -> s.getAvgGrade() > 8);
+//        System.out.println("-----------------------------------");
+//        info.testStudents(students, s -> s.getAge() < 30);
+//        System.out.println("-----------------------------------");
+//        info.testStudents(students, s
+//                -> s.getAge() > 20 && s.getAvgGrade() < 9.3 && s.getSex() == 'f');
     }
 }
 
