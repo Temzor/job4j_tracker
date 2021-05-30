@@ -19,7 +19,8 @@ public class FI {
         Arrays.sort(atts, cmpText);
         System.out.println(Arrays.asList(atts));
 
-        Comparator<Attachment> cmpDescSize = (left, right) ->  right.getSize() - left.getSize();
+        Comparator<Attachment> cmpDescSize = (left, right) ->
+                Integer.compare(right.getSize(), left.getSize());
         Arrays.sort(atts, cmpDescSize);
         System.out.println(Arrays.asList(atts));
 
