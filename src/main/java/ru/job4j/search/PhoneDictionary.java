@@ -14,12 +14,12 @@ public class PhoneDictionary {
         Predicate<Person> checkByName = c -> c.getName().contains(key);
         Predicate<Person> checkBySurname = c -> c.getSurname().contains(key);
         Predicate<Person> checkByTelephone = c -> c.getTelephone().contains(key);
-        Predicate<Person> checkByAdress = c -> c.getAddress().contains(key);
+        Predicate<Person> checkByAddress = c -> c.getAddress().contains(key);
 
         Predicate<Person> combine = checkByName
                 .or(checkBySurname)
                 .or(checkByTelephone)
-                .or(checkByAdress);
+                .or(checkByAddress);
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : persons) {
             if (combine.test(person)) {
