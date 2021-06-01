@@ -19,7 +19,7 @@ public class DiapasonFunctionTest {
     @Test
     public void whenLinearFunctionThenQuad() {
         List<Double> result = DiapasonFunction.diapason(3, 7, x -> 2 * Math.pow(x, 2) + 3 * x + 7);
-        List<Double> expected = Arrays.asList(32D, 51D, 86D, 153D);
+        List<Double> expected = Arrays.asList(34D, 51D, 72D, 97D);
         assertThat(result, is(expected));
     }
 
