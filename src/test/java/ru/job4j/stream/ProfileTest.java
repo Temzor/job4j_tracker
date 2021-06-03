@@ -3,8 +3,7 @@ package ru.job4j.stream;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -29,6 +28,7 @@ public class ProfileTest {
         List<Address> result  = Profiles.collect(collectProfile);
         List<Address> expected  = Arrays.asList(addressOne, addressTwo,
                 addressThree, addressFour, addressFive);
+        expected.sort(Comparator.comparing(Address::getCity));
         assertEquals(result, expected);
 
     }
@@ -52,6 +52,7 @@ public class ProfileTest {
         List<Address> result  = Profiles.collect(collectProfile);
         List<Address> expected  = Arrays.asList(addressOne,
                 addressThree);
+        expected.sort(Comparator.comparing(Address::getCity));
         assertEquals(result, expected);
 
     }
