@@ -32,4 +32,27 @@ public class ProfileTest {
         assertEquals(result, expected);
 
     }
+
+    @Test
+    public void whenAddressDuplicateShow() {
+        Address addressOne = new Address("Moscow", "40 years of October", 5, 16);
+        Address addressTwo = new Address("Moscow", "40 years of October", 5, 16);
+        Address addressThree = new Address("Yekaterinburg", "Blucher street", 18, 403);
+        Address addressFour = new Address("Yekaterinburg", "Blucher street", 18, 403);
+        Address addressFive = new Address("Yekaterinburg", "Blucher street", 18, 403);
+
+        Profile profile1 = new Profile(addressOne);
+        Profile profile2 = new Profile(addressTwo);
+        Profile profile3 = new Profile(addressThree);
+        Profile profile4 = new Profile(addressFour);
+        Profile profile5 = new Profile(addressFive);
+
+        List<Profile> collectProfile = Arrays.asList(profile1, profile2,
+                profile3, profile4, profile5);
+        List<Address> result  = Profiles.collect(collectProfile);
+        List<Address> expected  = Arrays.asList(addressOne,
+                addressThree);
+        assertEquals(result, expected);
+
+    }
 }
