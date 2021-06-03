@@ -43,6 +43,10 @@ class Pair<V1, V2> {
             this.value2 = value2;
         }
 
+        public V abc(V value) {
+            return value;
+        }
+
         public V getFirstValue() {
             return value1;
         }
