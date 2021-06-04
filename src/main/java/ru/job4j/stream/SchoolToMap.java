@@ -8,12 +8,13 @@ public class SchoolToMap {
     public Map<String, Student> collect(List<Student> students) {
         return students
                 .stream()
-                .distinct()
                 .collect(Collectors.toMap(
                         Student::getSurname,
-                        student -> student
-                ));
+                        student -> student,
+                        (student, studentDuplicate) ->
+                                student.getSurname().equals(studentDuplicate.getSurname())
+                                       ? student : studentDuplicate
+                 ));
 
     }
 }
-
