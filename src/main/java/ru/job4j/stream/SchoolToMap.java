@@ -11,9 +11,7 @@ public class SchoolToMap {
                 .collect(Collectors.toMap(
                         Student::getSurname,
                         student -> student,
-                        (student, studentDuplicate) ->
-                                student.getSurname().equals(studentDuplicate.getSurname())
-                                       ? student : studentDuplicate
+                        (student, studentDuplicate) -> student
                  ));
 
     }
