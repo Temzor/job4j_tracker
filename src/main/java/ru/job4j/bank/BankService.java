@@ -1,5 +1,5 @@
 package ru.job4j.bank;
-/**
+/*
  * Класс описывает работу банковской системы в которой можно
  * зарегистрировать пользователя, добавить пользователя, добавлять пользователю
  * банковский счет, изменять баланс по средтвам переводов между счетами
@@ -26,7 +26,7 @@ public class BankService {
      * @param user пользователь который добавляется в hash.map()
      */
     public void addUser(User user) {
-            users.putIfAbsent(user, new ArrayList<Account>());
+            users.putIfAbsent(user, new ArrayList<>());
     }
 
     /**
@@ -48,15 +48,15 @@ public class BankService {
     /**
      * Данный метод производит поиск пользователя по паспорту
      * @param passport паспорт пользователя, который принимает метод и по которому происходит поиск
-     * @return возвращается пользователь, либо null если пользователя не найдено
+     * @return возвращается пользователь, через stream
      */
     public User findByPassport(String passport) {
-        for (User userPassport : users.keySet()) {
-            if (userPassport.getPassport().equals(passport)) {
-                return userPassport;
-            }
-        }
-        return null;
+        return users
+                .keySet()
+                .stream()
+                .filter(p -> p.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -67,17 +67,17 @@ public class BankService {
      *            по которому осуществляется поиск пользователя
      * @param requisite реквизит который принимает метод и
      *             по которому происходит идентификация реквизитов в листе
-     * @return возвращает пользователя если он найден
+     * @return возвращает пользователя если он найден, через поток stream
      */
     public Account findByRequisite(String passport, String requisite) {
         User userByRequisite = findByPassport(passport);
         if (userByRequisite != null) {
-            List<Account> accountList = users.get(userByRequisite);
-            for (Account account : accountList) {
-                if (account.getRequisite().equals(requisite)) {
-                    return account;
-                }
-            }
+            return users
+                    .get(userByRequisite)
+                    .stream()
+                    .filter(r -> r.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
         }
         return null;
     }
