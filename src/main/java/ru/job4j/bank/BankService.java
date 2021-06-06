@@ -17,7 +17,7 @@ public class BankService {
     /**
      * Данное поле описывает пользователей системы с привязаными к ним счетам
      */
-    private Map<User, List<Account>> users = new HashMap<>();
+    private final Map<User, List<Account>> users = new HashMap<>();
 
     /**
      * Данный метод добавляет пользователя в систему, при условии
