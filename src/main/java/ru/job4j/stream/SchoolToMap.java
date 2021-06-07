@@ -5,14 +5,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class SchoolToMap {
-    public Map<String, Student> collect(List<Student> students) {
-        return students
-                .stream()
+    public Map<String, Student> listMap(List<Student> students) {
+        return students.stream()
                 .collect(Collectors.toMap(
                         Student::getSurname,
-                        student -> student,
-                        (student, studentDuplicate) -> student
-                 ));
-
+                        e -> e,
+                        (k, v) -> k
+                ));
     }
 }
