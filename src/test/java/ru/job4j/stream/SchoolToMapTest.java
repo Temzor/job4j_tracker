@@ -30,6 +30,7 @@ public class SchoolToMapTest {
         expected.put("Vakhnin", new Student(50, "Vakhnin"));
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenToMapWithDuplicate() {
         List<Student> students = List.of(
