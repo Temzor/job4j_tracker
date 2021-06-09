@@ -12,57 +12,68 @@ public class CompanyStructure {
     private int countEmployees;
     private boolean agent;
 
-    CompanyStructure buildNameCompany(String nameCompany) {
-        this.nameCompany = nameCompany;
-        return this;
-    }
+    static class Builder {
+        private String nameCompany;
+        private String address;
+        private int index;
+        private int inn;
+        private String taxation;
+        private String field;
+        private int countEmployees;
+        private boolean agent;
 
-    CompanyStructure buildAddress(String address) {
-        this.address = address;
-        return this;
-    }
+        Builder buildNameCompany(String nameCompany) {
+            this.nameCompany = nameCompany;
+            return this;
+        }
 
-    CompanyStructure buildIndex(int index) {
-        this.index = index;
-        return this;
-    }
+        Builder buildAddress(String address) {
+            this.address = address;
+            return this;
+        }
 
-    CompanyStructure buildInn(int inn) {
-        this.inn = inn;
-        return this;
-    }
+        Builder buildIndex(int index) {
+            this.index = index;
+            return this;
+        }
 
-    CompanyStructure buildTaxation(String taxation) {
-        this.taxation = taxation;
-        return this;
-    }
+        Builder buildInn(int inn) {
+            this.inn = inn;
+            return this;
+        }
 
-    CompanyStructure buildField(String field) {
-        this.field = field;
-        return this;
-    }
+        Builder buildTaxation(String taxation) {
+            this.taxation = taxation;
+            return this;
+        }
 
-    CompanyStructure buildCountEmployees(int countEmployees) {
-        this.countEmployees = countEmployees;
-        return this;
-    }
+        Builder buildField(String field) {
+            this.field = field;
+            return this;
+        }
 
-    CompanyStructure buildAgent(boolean agent) {
-        this.agent = agent;
-        return this;
-    }
+        Builder buildCountEmployees(int countEmployees) {
+            this.countEmployees = countEmployees;
+            return this;
+        }
 
-    CompanyStructure build() {
-        CompanyStructure companyStructure = new CompanyStructure();
-        companyStructure.nameCompany = nameCompany;
-        companyStructure.address = address;
-        companyStructure.index = index;
-        companyStructure.inn = inn;
-        companyStructure.taxation = taxation;
-        companyStructure.field = field;
-        companyStructure.countEmployees = countEmployees;
-        companyStructure.agent = agent;
-        return companyStructure;
+        Builder buildAgent(boolean agent) {
+            this.agent = agent;
+            return this;
+        }
+
+        CompanyStructure build() {
+            CompanyStructure companyStructure = new CompanyStructure();
+            companyStructure.nameCompany = nameCompany;
+            companyStructure.address = address;
+            companyStructure.index = index;
+            companyStructure.inn = inn;
+            companyStructure.taxation = taxation;
+            companyStructure.field = field;
+            companyStructure.countEmployees = countEmployees;
+            companyStructure.agent = agent;
+            return companyStructure;
+        }
     }
 
     @Override
@@ -80,7 +91,7 @@ public class CompanyStructure {
     }
 
     public static void main(String[] args) {
-        CompanyStructure companyStructure = new CompanyStructure()
+        CompanyStructure companyStructure = new Builder()
                 .buildNameCompany("CSI")
                 .buildAddress("Saint-Petersburg, Chkalov p. b. 50 lit. A")
                 .buildIndex(192568)
