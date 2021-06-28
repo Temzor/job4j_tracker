@@ -7,10 +7,7 @@ package ru.job4j.bank;
  * @version 1.0
  */
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BankService {
 
@@ -36,7 +33,7 @@ public class BankService {
      * @param account счет пользователя, который принимает метод
      */
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
+        Optional<User> user = findByPassport(passport);
         if (user != null) {
             List<Account> accountList = users.get(user);
             if (!accountList.contains(account)) {
@@ -50,13 +47,15 @@ public class BankService {
      * @param passport паспорт пользователя, который принимает метод и по которому происходит поиск
      * @return возвращается пользователь, через stream
      */
-    public User findByPassport(String passport) {
-        return users
-                .keySet()
-                .stream()
-                .filter(p -> p.getPassport().equals(passport))
-                .findFirst()
-                .orElse(null);
+    public Optional<User> findByPassport(String passport) {
+        Optional<User> rsl = Optional.empty();
+        for (User user : users.keySet()) {
+            if (user.getPassport().equals(passport)) {
+                rsl = Optional.of(user);
+                break;
+            }
+        }
+        return rsl;
     }
 
     /**
@@ -70,7 +69,7 @@ public class BankService {
      * @return возвращает пользователя если он найден, через поток stream
      */
     public Account findByRequisite(String passport, String requisite) {
-        User userByRequisite = findByPassport(passport);
+        Optional<User> userByRequisite = findByPassport(passport);
         if (userByRequisite != null) {
             return users
                     .get(userByRequisite)
@@ -107,5 +106,12 @@ public class BankService {
             result = true;
     }
         return result;
+    }
+
+    public static void main(String[] args) {
+        BankService bank = new BankService();
+        bank.addUser(new User("321", "Petr Arsentev"));
+        Optional<User> opt = bank.findByPassport("3211");
+        opt.ifPresent(user -> System.out.println(user.getUsername()));
     }
 }
