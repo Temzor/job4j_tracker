@@ -9,15 +9,20 @@ public class MethodMap {
         list.add("Hi!");
         list.add("How are you?");
         list.add("OK!");
-        list.add("By!");
+        list.add("Bay!");
 
-        List<Integer> listInt = list.stream().map(element -> element.length())
+        List<Integer> listInt = list
+                .stream()
+                .map(String::length)
                 .collect(Collectors.toList());
         System.out.println(list);
         System.out.println(listInt);
 
         int[] array = {5, 9, 3, 8, 1};
-        array = Arrays.stream(array).map(element
+        System.out.println(Arrays.toString(array));
+        array = Arrays
+                .stream(array)
+                .map(element
         -> {
             if (element % 3 == 0) {
             element /= 3;
@@ -30,13 +35,16 @@ public class MethodMap {
         Set<String> set = new TreeSet<>();
         set.add("Hi!");
         set.add("How are you?");
-        set.add("Good");
+        set.add("Good!");
         set.add("By");
 
         System.out.println(set);
 
-        Set<Integer> setInt = set.stream().map(element -> element.length())
-        .collect(Collectors.toSet());
+        Set<Integer> setInt = set
+                .stream()
+                .map(String::length)
+                .collect(Collectors.toSet());
         System.out.println(setInt);
+
     }
 }
