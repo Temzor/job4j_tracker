@@ -18,7 +18,7 @@ public class MethodReduce {
         System.out.println(result);
         System.out.println("-----------------------------------------");
 
-        int result2 = list.stream().reduce(1, (accumulator, element) ->
+        int result2 = list.stream().reduce(10, (accumulator, element) ->
                 accumulator * element);
         System.out.println(result2);
         System.out.println("-----------------------------------------");
