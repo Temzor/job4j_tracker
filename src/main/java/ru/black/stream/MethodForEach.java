@@ -12,7 +12,6 @@ public class MethodForEach {
 
         System.out.println("--------------------------------------------------");
         Arrays.stream(array).forEach(element -> System.out.println(element));
-
         System.out.println("--------------------------------------------------");
         Arrays.stream(array).forEach(System.out::println);
 
