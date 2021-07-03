@@ -1,6 +1,7 @@
 package ru.black.stream;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,6 +19,13 @@ public class MethodFilter {
         students.add(st3);
         students.add(st4);
         students.add(st5);
+
+        students = students
+                .stream()
+                .sorted(Comparator.comparing(Student::getName))
+                .collect(Collectors.toList());
+
+        System.out.println(students);
 
         students = students
                 .stream()
