@@ -3,10 +3,12 @@ package ru.black.stream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MethodFilter {
+    @SuppressWarnings("checkstyle:LeftCurly")
     public static void main(String[] args) {
         Student st1 = new Student("Ivan", 'm', 22, 3, 8.3);
         Student st2 = new Student("Nikolay", 'm', 28, 2, 6.4);
@@ -19,6 +21,16 @@ public class MethodFilter {
         students.add(st3);
         students.add(st4);
         students.add(st5);
+
+        students
+                .stream()
+                .map(element -> {
+                    element.setName(element.getName().toUpperCase());
+                    return element;
+                })
+                .filter(element -> element.getSex() == 'f')
+                .sorted((a, x) -> a.getAge() - x.getAge())
+                .forEach(System.out::println);
 
         students = students
                 .stream()
