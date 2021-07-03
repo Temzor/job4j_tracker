@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 public class PredicateCheckEven {
 
     public static boolean check(int num) {
-        return check(c -> c % 2 == 0, num);
+         return check(p -> p % 2 == 0, num);
     }
 
     private static boolean check(Predicate<Integer> predicate, int num) {
