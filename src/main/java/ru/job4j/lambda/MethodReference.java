@@ -21,5 +21,4 @@ public class MethodReference {
     private static void consumerByClass(String input) {
         System.out.print("From class: " + input);
     }
-
 }
