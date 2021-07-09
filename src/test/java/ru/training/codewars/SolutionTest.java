@@ -5,16 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SolutionTest {
-    @Test
-    public void validPins() {
-        assertTrue(Solution.validatePin("1234"));
-        assertTrue(Solution.validatePin("0000"));
-        assertTrue(Solution.validatePin("1111"));
-        assertTrue(Solution.validatePin("123456"));
-        assertTrue(Solution.validatePin("098765"));
-        assertTrue(Solution.validatePin("000000"));
-        assertTrue(Solution.validatePin("090909"));
-    }
 
     @Test
     public void nonDigitCharacters() {
